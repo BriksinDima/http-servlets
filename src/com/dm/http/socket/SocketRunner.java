@@ -10,13 +10,12 @@ import java.net.Socket;
 public class SocketRunner {
     public static void main(String[] args) throws IOException {
 
-        InetAddress inetAddress = Inet4Address.getByName("google.com");
-        try (var socket = new Socket("google.com", 80);
+        InetAddress inetAddress = Inet4Address.getByName("localhost");
+        try (var socket = new Socket(inetAddress, 7777);
              var outputStream = new DataOutputStream(socket.getOutputStream());
              var inputStream = new DataInputStream(socket.getInputStream())) {
-            outputStream.writeUTF("Hello world");
-            byte[] response = inputStream.readAllBytes();
-            System.out.println(response.length);
+            outputStream.writeUTF("Hello world!");
+            System.out.println("Response from server: " + inputStream.readUTF());
         }
     }
 }
