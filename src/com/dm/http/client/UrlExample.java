@@ -1,4 +1,4 @@
-package com.dm.http.socket;
+package com.dm.http.client;
 
 import java.io.IOException;
 import java.net.URL;
